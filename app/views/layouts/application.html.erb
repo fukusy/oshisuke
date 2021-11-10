@@ -21,12 +21,12 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav ml-auto">
                 <% if user_signed_in? %>
-                  <li>マイページ</li>
-                  <li>イベントページ</li>
+                  <li><%= link_to "マイページ", user_path(current_user), class: 'nav-link active' %></li>
+                  <li><%= link_to "イベントページ", events_path, class: 'nav-link active' %></li>
                   <li>お問い合わせ</li>
                   <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link active' %></li>
                 <% elsif admin_signed_in? %>
-                  <li>お問い合わせ一覧</li>
+                  <li><%= link_to "お問い合わせ一覧", admin_contacts_path, class: 'nav-link active' %></li>
                   <li>イベント一覧</li>
                   <li>タグ追加</li>
                   <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link active' %></li>

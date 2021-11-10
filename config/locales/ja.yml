@@ -1,0 +1,11 @@
+ja:
+  enums:
+    user:
+      use_rules: "利用規約に同意する"
+
+
+    contact:
+      contact_title:
+        add_tag: "タグの追加について"
+        about_event: "イベントについて"
+        other: "その他について"

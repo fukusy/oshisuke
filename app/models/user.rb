@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
   has_many :contacts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :relationship_events, dependent: :destroy
@@ -32,5 +32,7 @@ class User < ApplicationRecord
   end
 
   attachment :profile_image
+  
+  validates :use_rules, presence: {message: 'を入力してください'}
 
 end
