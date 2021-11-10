@@ -1,0 +1,2 @@
+class RelationshipUser < ApplicationRecord
+end
