@@ -1,5 +1,9 @@
 class Tag < ApplicationRecord
+
+  has_many :events, dependent: :destroy
   
-  belongs_to :event
-  
+  # タグ名が空じゃないことをチェック
+  validates :tag_name, presence: true
+
+
 end

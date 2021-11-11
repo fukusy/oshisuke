@@ -1,1 +1,31 @@
-タグ追加
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <h3 class="my-3">タグ一覧・追加</h3>
+      <%= form_with model:@new_tag,url: admin_tags_path, lacal:true do |f| %>
+        <div class="form-group">
+          <%= f.label :タグ名 %>
+          <%= f.text_field :tag_name, placeholder: "タグ名" %>
+          <%= f.submit "新規登録", class: 'btn btn-success' %>
+        </div>
+      <% end %>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ジャンル</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tags.each do |tag| %>
+          <tr>
+            <td><%= tag.tag_name %></td>
+            <td><%= link_to '編集する', edit_admin_tag_path(tag.id), class: "btn btn-success" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

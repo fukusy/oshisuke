@@ -32,7 +32,9 @@ class User < ApplicationRecord
   end
 
   attachment :profile_image
-  
-  validates :use_rules, presence: {message: 'を入力してください'}
+
+
+  # チェックされていなければ表示
+  validates :use_rules, presence: {message: 'のチェックをしてください'}
 
 end

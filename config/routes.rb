@@ -13,7 +13,7 @@ Rails.application.routes.draw do
      get '/' => 'homes#top'
      resources :contacts, only: [:index]
      resources :events, only: [:index]
-     resources :tags, except: [:destroy, :show, :new]
+     resources :tags, except: [ :show, :new]
    end
 
    scope module: :user do
