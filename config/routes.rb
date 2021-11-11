@@ -25,8 +25,8 @@ Rails.application.routes.draw do
      get 'followers' => 'relationship_users#followers', as: 'followers'
      end
 
-     resources :contacts, only: [:new, :create]
      get 'contacts/complete' => 'contacts#complete'
+     resources :contacts, only: [:new, :create]
      resources :events, except: [:new] do
        resource :relationship_events, only: [:create, :destroy]
      end

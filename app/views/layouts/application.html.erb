@@ -23,12 +23,12 @@
                 <% if user_signed_in? %>
                   <li><%= link_to "マイページ", user_path(current_user), class: 'nav-link active' %></li>
                   <li><%= link_to "イベントページ", events_path, class: 'nav-link active' %></li>
-                  <li>お問い合わせ</li>
+                  <li><%= link_to "お問い合わせ", new_contact_path, class: 'nav-link active' %></li>
                   <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link active' %></li>
                 <% elsif admin_signed_in? %>
                   <li><%= link_to "お問い合わせ一覧", admin_contacts_path, class: 'nav-link active' %></li>
-                  <li>イベント一覧</li>
-                  <li>タグ追加</li>
+                  <li><%= link_to "イベント一覧", admin_events_path, class: 'nav-link active' %></li>
+                  <li><%= link_to "タグ一覧", admin_tags_path, class: 'nav-link active' %></li>
                   <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link active' %></li>
                 <% else %>
                   <li><%= link_to "Attention", attention_path, class: 'nav-link active' %></li>
