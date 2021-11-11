@@ -7,7 +7,8 @@ class User < ApplicationRecord
   has_many :contacts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :relationship_events, dependent: :destroy
-  belongs_to :events
+  has_many :events, dependent: :destroy
+  has_many :joined_events, through:  :relationship_events, source: :event
 
    # フォローの動き
   has_many :reverse_of_relationships, class_name: "RelationshipUser", foreign_key: "followed_id", dependent: :destroy

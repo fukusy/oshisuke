@@ -9,7 +9,7 @@ ja:
         add_tag: "タグの追加について"
         about_event: "イベントについて"
         other: "その他について"
-        
+
   date:
     abbr_day_names:
       - 日
