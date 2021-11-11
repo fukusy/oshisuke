@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-5">
       <h3 class="my-3">タグ一覧・追加</h3>
-      <%= form_with model:@new_tag,url: admin_tags_path, lacal:true do |f| %>
+      <%= form_with model:@new_tag,url: admin_tags_path, local:true do |f| %>
         <div class="form-group">
           <%= f.label :タグ名 %>
           <%= f.text_field :tag_name, placeholder: "タグ名" %>
