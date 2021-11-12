@@ -3,10 +3,10 @@ class User::ContactsController < ApplicationController
   def new
      @contact = Contact.new
   end
-  
+
   def create
     @contact = Contact.new(contact_params)
-    セーブがうまくいかないので修正する
+    @contact.user_id =current_user.id
     if @contact.save!
       redirect_to contacts_complete_path
     else
