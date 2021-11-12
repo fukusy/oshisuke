@@ -1,14 +1,16 @@
 class User::EventsController < ApplicationController
 
   def index
-    # @event = Event.new
-    # @events = Event.all
+    @event = Event.new
+    @events = Event.all
   end
 
   def create
+    @user = User.find(params[:id])
     @event = Event.new(event_parameter)
-    # @event.save!
-    # redirect_to events_path
+    
+    @event.save!
+    redirect_to events_path
   end
 
   def show
