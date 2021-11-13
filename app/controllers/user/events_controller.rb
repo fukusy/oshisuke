@@ -2,15 +2,18 @@ class User::EventsController < ApplicationController
 
   def index
     @event = Event.new
+    @tags = Tag.all
     @events = Event.all
   end
 
   def create
-    @user = User.find(params[:id])
     @event = Event.new(event_parameter)
-    
-    @event.save!
-    redirect_to events_path
+    @event.user_id = current_user.id
+    if @event.save
+      redirect_to event_path(event.id)
+    else
+      render :index
+    end
   end
 
   def show
@@ -30,7 +33,7 @@ class User::EventsController < ApplicationController
   private
 
   def event_parameter
-    # params.require(:event).permit(:event_date, :event_time, :event_name, :event_content, :tag_id)
+    params.require(:event).permit(:event_date, :event_time, :event_name, :event_content)
 
   end
 

@@ -6,7 +6,7 @@ class User::ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
-    @contact.user_id =current_user.id
+    @contact.user_id = current_user.id
     if @contact.save!
       redirect_to contacts_complete_path
     else
