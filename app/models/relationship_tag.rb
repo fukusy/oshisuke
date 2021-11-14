@@ -1,0 +1,2 @@
+class RelationshipTag < ApplicationRecord
+end
