@@ -83,3 +83,9 @@ gem "enum_help"
 # 機能系
 gem 'jquery-ui-rails'
 gem 'gon'
+
+# デプロイ
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
