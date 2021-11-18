@@ -21,8 +21,13 @@
         </div>
       </div>
       <h3 class="my-3">参加イベント一覧</h3>
-      <%= month_calendar do |date| %>
+      <%= month_calendar events:@user_events do |date, event| %>
         <%= date.day %>
+        <% event.each do |event| %>
+        <div>
+          <%= link_to event.event_name, event_path(event.id) %>
+        </div>
+        <% end %>
       <% end %>
     </div>
   </div>

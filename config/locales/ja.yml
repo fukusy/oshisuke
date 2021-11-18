@@ -9,8 +9,14 @@ ja:
         add_tag: "タグの追加について"
         about_event: "イベントについて"
         other: "その他について"
+        
+  time:
+    formats:
+      default: "%H:%M"
 
   date:
+    formats:
+      default: "%Y年%m月%d日"
     abbr_day_names:
       - 日
       - 月

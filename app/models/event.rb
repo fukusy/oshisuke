@@ -3,7 +3,7 @@ class Event < ApplicationRecord
   belongs_to :user
   has_many :relationship_events
   has_many :joined_users, through: :relationship_events, source: :user
-  has_many :comment, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   has_many :tags, through: :relationship_tags
   has_many :relationship_tags, dependent: :destroy

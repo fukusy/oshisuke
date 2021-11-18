@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container my-3">
   <div class="row">
     <div class="col-8">
       <h3 class="my-3 text-center">イベント一覧</h3>
@@ -12,7 +12,7 @@
       <% end %>
     </div>
 
-    <div class="col-4">
+    <div class="col-4 my-3  border">
       <h3 class="my-3 text-center">新規イベント</h3>
       <%= form_with model:@event, url: events_path, local:true do |f| %>
         <div class="form-group">
@@ -34,14 +34,16 @@
 
           <div class="form-group relationship_genres-field">
             <%= f.label "タグ" %>
-            <%= f.hidden_field :tag_ids, value: "", id: "form_tags" %>
-              <% @tags.each_with_index do |tag, index| %>
-                <div class="tags_data">
-                  <button type="button" value=<%= index %> class="btn btn-success" id="btn_relationship_genres_<%= index+1 %>">
-                    <%= tag.tag_name %>
-                  </button>
-                </div>
-              <% end %>
+            <div class='btn-toolbar' role="toolbar">
+              <%= f.hidden_field :tag_ids, value: "", id: "form_tags" %>
+                <% @tags.each_with_index do |tag, index| %>
+                  <div class="tags_data">
+                    <button type="button" value=<%= index %> class="btn btn-success mx-1" id="btn_relationship_genres_<%= index+1 %>">
+                      <%= tag.tag_name %>
+                    </button>
+                  </div>
+                <% end %>
+            </div>
           </div>
 
 
@@ -53,9 +55,10 @@
         <!--    < %= f.button tag.tag_name, :relationship_tag_id %>-->
         <!--</div>-->
         <!--< % end %>-->
-
-          <%= f.submit "新規イベント登録", class: 'btn btn-success' %>
-        <% end %>
+        <div class="text-center">
+          <%= f.submit "新規イベント登録", class: 'my-3 btn btn-secondary btn-block' %>
+          <% end %>
+        </div>
     </div>
 
   </div>

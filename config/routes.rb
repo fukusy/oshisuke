@@ -28,8 +28,8 @@ Rails.application.routes.draw do
      get 'contacts/complete' => 'contacts#complete'
      resources :contacts, only: [:new, :create]
      resources :events, except: [:new] do
-       resource :comments, only: [:create, :destroy]
-       resource :relationship_events, only: [:create, :destroy]
+       resource :comments, only: [:create, :edit, :update, :destroy]
+       resource :relationship_events, only: [:show, :create]
        resource :relationship_tags, only: [:create, :destroy]
      end
 

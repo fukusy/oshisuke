@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <h3 class="my-3">コメント編集</h3>
+      <%= form_with model:[@event, @comment],url: event_comments_path(@comment), local:true do |f| %>
+        <div class="form-group">
+          <%= f.label :コメント %>
+          <%= f.text_area :comment_content, class: 'form-control', rows: "5" %>
+        </div>
+
+        <%= f.submit "変更を保存", class: 'btn btn-success' %>
+      <% end %>
+    </div>
+  </div>
+</div>

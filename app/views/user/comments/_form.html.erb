@@ -1,0 +1,11 @@
+<h5>コメント投稿</h5>
+<%= form_with(model: [event, comment], local:true ) do |f| %>
+  <div class="form-group">
+   <label for="comment"></label>
+      <%= f.text_area :comment_content, class: "form-control", rows: "5", placeholder: "コメントここに" %>
+  </div>
+  <div class="form-group">
+    <%= f.submit '送信' %>
+  </div>
+<% end %>
+<!--url: event_comments_path(event)-->
