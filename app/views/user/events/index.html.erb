@@ -6,7 +6,7 @@
         <%= date.day %>
         <% events.each do |event| %>
         <div>
-          <%= link_to event.event_name, event_path(event.id) %>
+          <%= link_to event.event_name, event_path(event.id), class: 'btn btn-event' %>
         </div>
         <% end %>
       <% end %>
