@@ -5,7 +5,10 @@ Rails.application.routes.draw do
 
   devise_for :users,skip: [:passwords,], controllers: {
     registrations: "user/registrations",
-    sessions: 'user/sessions'
+    sessions: 'user/sessions',
+    registrations: 'user/registrations',
+    # Twitter API認証用
+    :omniauth_callbacks => 'user/omniauth_callbacks',
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -13,7 +16,7 @@ Rails.application.routes.draw do
      get '/' => 'homes#top'
      resources :contacts, only: [:index]
      resources :events, only: [:index]
-     resources :tags, except: [:destroy, :show, :new]
+     resources :tags, except: [ :show, :new]
    end
 
    scope module: :user do
@@ -28,7 +31,9 @@ Rails.application.routes.draw do
      get 'contacts/complete' => 'contacts#complete'
      resources :contacts, only: [:new, :create]
      resources :events, except: [:new] do
-       resource :relationship_events, only: [:create, :destroy]
+       resource :comments, only: [:create, :edit, :update, :destroy]
+       resource :relationship_events, only: [:show, :create]
+       resource :relationship_tags, only: [:create, :destroy]
      end
 
    end

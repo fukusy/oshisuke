@@ -1,7 +1,17 @@
-<h1>logo</h1>
-<p>初めてこのサイトをご利用する際は、
-Attentionをご一読ください。</p>
-<%= link_to "Attention", attention_path, class: 'nav-link active' %>
+<div class="container">
+  <div class="col-sm-12 col-md-12 col-lg-5 px-5 px-sm-0 mx-auto pt-5 text-center">
+    <h1>logo</h1>
+    <p>初めてこのサイトをご利用する際は、</br>
+    Attentionをご一読ください。</p>
+    <div>
+      <%= link_to "Attention", attention_path, class: 'btn_top nav-link active mx-auto' %>
+    </div>
+    <div class="btn-group">
+      <div class='btn-toolbar'>
+        <%= link_to "新規登録", new_user_registration_path, class: 'btn_top nav-link active' %>
+        <%= link_to "ログイン", new_user_session_path, class: 'btn_top nav-link active' %>
+      </div>
+    </div>
 
-<%= link_to "新規登録", new_user_registration_path, class: 'nav-link active' %>
-<%= link_to "ログイン", new_user_session_path, class: 'nav-link active' %>
+  </div>
+</div>

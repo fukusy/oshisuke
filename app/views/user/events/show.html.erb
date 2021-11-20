@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 border mt-4">
+      <h2><%= @event.event_name %></h2>
+      <p>
+        作成者：
+        <%= link_to user_path(@event.user.id) do %>
+          <%= attachment_image_tag @event.user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "35x35"  %>
+          <%= @event.user.name %>
+        <% end %>
+        <!--<p>< %= @event_tags.tag_name %></p>-->
+      </p>
+      <hr></hr>
+      <!--< % @event.tags.each do |tag| %>-->
+      <!--  <p>< %= tag.tag_name %></p>-->
+      <!--< % end %>-->
+      <p><%= @event.event_content %></p>
+
+      <% if @event.user == current_user %>
+        <%= link_to "編集", edit_event_path(@event) %>
+        <%= link_to "削除", event_path(@event), method: :delete %>
+      <% end %>
+    </div>
+
+    <div class="col-8 mt-3">
+      <%= render partial: "user/comments/comments", locals: { comments: @comments } %>
+    </div>
+    <div class="col-4 mt-3">
+      <%= render partial: "user/comments/form", locals: { event: @event, comment: @comment } %>
+    </div>
+  </div>
+</div>

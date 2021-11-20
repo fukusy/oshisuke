@@ -1,0 +1,23 @@
+<div class="underlay-photo" >
+  <div style='height: 500px;'>
+    <div class="col-sm-12 col-md-12 col-lg-5 px-5 px-sm-0 mx-auto pt-5 text-center">
+      <h3>イベント一覧</h3>
+      <% @events.each do |event| %>
+        <div class="col-12 border mt-3">
+          <%= link_to event_path(event.id) do %>
+            <h5><%= event.event_name %></h5>
+          <% end %>
+          <%= link_to user_path(event.user_id) do %>
+            <p><%= event.user.name %></p>
+          <% end %>
+          <!--lメソッドでDRY書式に指定-->
+          <p><%= l event.event_date %></p>
+          <p><%= l event.event_time %></p>
+          <p><%= event.event_content %></p>
+
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

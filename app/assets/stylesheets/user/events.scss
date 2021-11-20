@@ -1,3 +1,13 @@
 // Place all the styles related to the user/events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.btn-event {
+  background-color: #333;
+  color: #fff;
+}
+
+.btn-event:hover {
+  background-color: #59b1eb;
+}
