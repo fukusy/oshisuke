@@ -5,7 +5,10 @@ Rails.application.routes.draw do
 
   devise_for :users,skip: [:passwords,], controllers: {
     registrations: "user/registrations",
-    sessions: 'user/sessions'
+    sessions: 'user/sessions',
+    registrations: 'user/registrations',
+    # Twitter API認証用
+    :omniauth_callbacks => 'user/omniauth_callbacks',
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

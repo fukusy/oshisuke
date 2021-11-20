@@ -65,6 +65,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem "omniauth-rails_csrf_protection"
 
 # 画像処理系
 gem "refile", require: "refile/rails", github: 'manfe/refile'
