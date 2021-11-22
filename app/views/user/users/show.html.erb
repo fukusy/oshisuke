@@ -1,17 +1,42 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      
-      <div class="col-12">
+
+      <div class="col-12 mt-4">
         <div class="row">
           <div class="col-2">
-            <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100"  %>
+            <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100", class: "rounded-circle"  %>
           </div>
+            
           <div class="col-10">
-            <%= @user.name %></br>
+            <%= @user.name %>
+            フォロー
+            <%= link_to user_followings_path(@user) do %>
+              <%= @user.followings.count %>
+            <% end %>
+    
+            フォロワー
+            <%= link_to user_followers_path(@user) do %>
+              <%= @user.followers.count %>
+            <% end %>
+            <!--フォロー機能-->
+          <div>
+            <% unless @user == current_user %>
+              <% if current_user.following?(@user) %>
+              <!--destroyされていない-->
+                <%= link_to "フォローを外す", user_relationship_users_path(@user.id), class:'btn btn-sm btn-info', method: :delete %>
+              <% else %>
+                <%= link_to "フォローする", user_relationship_users_path(@user.id), class:'btn btn-sm btn-success',method: :post %>
+              <% end %>
+            <% end %>
+          </div>
+
+
+
+            </br>
             <%= @user.introduction %>
               <div>
-                <% unless @user != current_user  %>
+                <% unless @user != current_user %>
                   <%= link_to edit_user_path(@user), class:"btn btn-outline-secondary" do %>
                     <i class="fas fa-user-cog">プロフィール編集</i>
                   <% end %>
