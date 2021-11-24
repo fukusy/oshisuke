@@ -7,14 +7,14 @@
           <div class="col-2">
             <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100", class: "rounded-circle"  %>
           </div>
-            
+
           <div class="col-10">
             <%= @user.name %>
             フォロー
             <%= link_to user_followings_path(@user) do %>
               <%= @user.followings.count %>
             <% end %>
-    
+
             フォロワー
             <%= link_to user_followers_path(@user) do %>
               <%= @user.followers.count %>
@@ -46,13 +46,14 @@
         </div>
       </div>
       <h3 class="my-3">参加イベント一覧</h3>
-      <%= month_calendar events:@user_events do |date, event| %>
+      <%= month_calendar events: @user_events||@user_relationship_events do |date, event| %>
         <%= date.day %>
         <% event.each do |event| %>
         <div>
           <%= link_to event.event_name, event_path(event.id) %>
         </div>
         <% end %>
+
       <% end %>
     </div>
   </div>

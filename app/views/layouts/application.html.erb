@@ -39,10 +39,10 @@
             </div>
           </div>
           <div class="search-form">
-            <!--< %= form_with url: search_path, method: :get, local:true do |f| %>-->
-            <!--  < %= f.text_field :keyword, placeholder: "Search" %>-->
-              <!--< %= f.submit %>-->
-            <!--< % end %>-->
+            <%= form_with url: search_path, method: :get, local:true do |f| %>
+              <%= f.text_field :keyword, placeholder: "Search" %>
+              <%= f.submit %>
+            <% end %>
           </div>
         </nav>
       </header>

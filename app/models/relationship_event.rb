@@ -1,6 +1,6 @@
 class RelationshipEvent < ApplicationRecord
-  
+
   belongs_to :user
-  has_many :events, dependent: :destroy
-  
+  belongs_to :event
+
 end

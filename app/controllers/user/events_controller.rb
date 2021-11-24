@@ -24,16 +24,20 @@ class User::EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    # @event_relationship = @event.relationship_events.user_id
+    # @event_relationship = RelationshipEvent.where("event_id", @event.id).where("user_id" , current_user)
+    # @check_user = current_user
     @comments = Comment.all
     @comment = Comment.new
     # @event_tags = @event.relationship_tags
-    
-    # 後でイベント作成者と管理者、イベント参加者をif文で分岐
-    # if current_user == @event.user
-    #   render :show
-    # else
-    #   redirect_to event_relationship_events_path
-    # end
+
+    # 後でイベント作成者とイベント参加者、それ以外をif文で分岐
+    if current_user == @event.user || current_user.joined_events.include?(@event)
+    # if current_user == @event.user || @event_relationship != []
+      render :show
+    else
+      redirect_to event_relationship_event_path(@event)
+    end
   end
 
   def destroy

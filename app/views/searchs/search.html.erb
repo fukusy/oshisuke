@@ -1,0 +1,16 @@
+<div class="container">
+  <h3>"<%= @keyword %>"一覧</h3>
+  <p>全<%= @events.count %>件</p>
+  <div class="row">
+      <% @events.each do |event| %>
+          <div class="col-md-4">
+              <div class="w-50 mx-auto mt-4">
+                <%= link_to event.event_name, event_path(event.id) %>
+                <p class="">
+                    <%= event.event_content %>
+                </p>
+              </div>
+          </div>
+      <% end %>
+  </div>
+</div>

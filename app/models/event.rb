@@ -12,6 +12,11 @@ class Event < ApplicationRecord
     self.event_date
   end
 
+  # 検索機能
+  def self.search(keyword)
+    @events = Event.where("event_name LIKE ?", "%#{keyword}%")
+  end
+
 
   # def save_tags(genres)
   #   current_genres = self.tags.pluck(:name) unless self.tags.nill?

@@ -4,4 +4,6 @@ class Admin::EventsController < ApplicationController
     @events = Event.all
   end
   
+  
+  
 end

@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 ">
+      <h3 class="my-3 text-center">イベントに参加しますか？</h3>
+      <%= link_to "参加する",event_relationship_events_path(@event,@user), method: :post %>
+      <%= link_to "参加しない",events_path(@event) %>
+    </div>
+  </div>
+</div>

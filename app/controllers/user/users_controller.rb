@@ -1,10 +1,12 @@
 class User::UsersController < ApplicationController
-  
+
   def show
     @user = User.find(params[:id])
     @user_events = @user.events
+    @user_relationship_events = @user.joined_events
+    # @user_relationship_events = RelationshipEvent.find(params[:user_id]).where("event_id", event_id)
   end
-  
+
   def edit
     @user_image = User.new
     @user = User.find(params[:id])
@@ -14,7 +16,7 @@ class User::UsersController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
-  
+
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
@@ -24,17 +26,17 @@ class User::UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     current_user.unfollow(params[:user_id])
     redirect_to request.referer
   end
-  
+
   private
-  
+
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction)
   end
-    
-  
+
+
 end
