@@ -12,10 +12,17 @@
               <%= attachment_image_tag @event.user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "35x35", class: "rounded-circle" %>
               <%= @event.user.name %>
             <% end %>
-        </p>
+          </p>
+        </div>
+        <div class="float-right">
+          <p>
+            タグ表示：
+            <% @event.tags.each do |tag| %>
+              <%= tag.tag_name %>
+            <% end %>
+          </p>
         </div>
       </div>
-        <!--<p>< %= @event_tags.tag_name %></p>-->
 
       <!--< % @event.tags.each do |tag| %>-->
       <!--  <p>< %= tag.tag_name %></p>-->

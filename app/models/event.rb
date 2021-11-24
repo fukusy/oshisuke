@@ -5,8 +5,8 @@ class Event < ApplicationRecord
   has_many :joined_users, through: :relationship_events, source: :user
   has_many :comments, dependent: :destroy
 
-  has_many :tags, through: :relationship_tags
   has_many :relationship_tags, dependent: :destroy
+  has_many :tags, through: :relationship_tags
 
   def start_time
     self.event_date

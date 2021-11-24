@@ -6,7 +6,7 @@
 
     <div class="col-md-10">
     <div class="row">
-    <% @tags.each do |tag| %>
+    <% @tag_events.each do |tag| %>
          <div class="col-md-3">
             <div class="mx-auto mt-4">
               <div class="card-deck">
@@ -25,5 +25,6 @@
     <% end %>
     </div>
     </div>
+    <%= paginate @tag_events %>
 </div>
 </div>
