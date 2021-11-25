@@ -14,13 +14,11 @@
             <% end %>
           </p>
         </div>
-        <div class="float-right">
-          <p>
-            タグ表示：
-            <% @event.tags.each do |tag| %>
-              <%= tag.tag_name %>
-            <% end %>
-          </p>
+        <div class="float-right btn-toolbar">
+          タグ表示：
+          <% @event.tags.each do |tag| %>
+              <p class="well"><%= link_to tag.tag_name,tag_path(tag.id) %></p>
+          <% end %>
         </div>
       </div>
 

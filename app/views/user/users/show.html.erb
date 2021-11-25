@@ -9,7 +9,7 @@
           </div>
 
           <div class="col-10">
-            <%= @user.name %>
+            <h5><%= @user.name %></h5>
             フォロー
             <%= link_to user_followings_path(@user) do %>
               <%= @user.followings.count %>
@@ -20,7 +20,7 @@
               <%= @user.followers.count %>
             <% end %>
             <!--フォロー機能-->
-          <div>
+          <!--<div>-->
             <% unless @user == current_user %>
               <% if current_user.following?(@user) %>
               <!--destroyされていない-->
@@ -29,10 +29,8 @@
                 <%= link_to "フォローする", user_relationship_users_path(@user.id), class:'btn btn-sm btn-success',method: :post %>
               <% end %>
             <% end %>
-          </div>
-
-
-
+          <!--</div>-->
+          
             </br>
             <%= @user.introduction %>
               <div>

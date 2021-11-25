@@ -20,40 +20,32 @@
           <%= f.time_field :event_time, class: 'form-control' %>
         </div>
         <div class="form-group relationship_genres-field">
-            <%= f.label "タグ" %>
-            <%= f.hidden_field :tag_ids, value: "", id: "form_tags" %>
-              <% @tags.each_with_index do |tag, index| %>
-                <div class="tags_data">
-                  <button type="button" value=<%= index %> class="btn btn-success" id="btn_relationship_genres_<%= index+1 %>">
-                    <%= tag.tag_name %>
-                  </button>
-                </div>
-              <% end %>
-          </div>
-        
-        
+          <%= f.label "タグ" %>
+          </br>
+          <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_name,{ checked: @event.tag_ids.map(&:to_param) }) do |tag| %>
+            <%= tag.label do %>
+              <%= tag.check_box %>
+              <%= tag.text %>
+            <% end %>
+          <% end %>
+
+
+          <!--<div class='btn-toolbar' role="toolbar">-->
+          <!--<　%= f.hidden_field :tag_ids, value: "", id: "form_tags" %>-->
+          <!--  <　% @tags.each_with_index do |tag| %>-->
+          <!--    <div class="tags_data">-->
+          <!--      <button type="button" value=<　%= index %> class="btn btn-success" id="btn_relationship_genres_<　%= index+1 %>">-->
+          <!--        <　%= tag.tag_name %>-->
+          <!--      </button>-->
+          <!--    </div>-->
+          <!--  <　% end %>-->
+          <!--</div>-->
+        </div>
+
+
         <%= f.submit "変更を保存", class: 'btn btn-success' %>
       <% end %>
     </div>
   </div>
 </div>
 
-
-<script>
-  $('.tags_data').each(function(index) {
-    const tag_id = '#btn_relationship_genres_' + (index+1)
-    // クリックしたら色が変わる
-    $(tag_id).on('click',function(){
-      // リセット
-      const tags = [];
-      $(this).toggleClass('btn-dark');
-      // 色が変わったデータを読み取る
-      $('.btn-dark').each(function(i) {
-        var num = this.value
-        // pushでデータの中身を送る
-        tags.push(gon.tags[num].id);
-      })
-      $('#form_tags').val(tags)
-    });
-  });
-</script>

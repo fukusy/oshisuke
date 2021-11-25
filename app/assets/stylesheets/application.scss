@@ -83,3 +83,14 @@ footer {
 .button_header:hover {
   background-color: rgba(255, 255, 255, .2);
 }
+
+/*========= 検索窓のためのCSS ===============*/
+
+// /*テキスト入力input設定*/
+ #search-text{
+ height:40px;
+ border-radius:25px;
+ border:none;
+ outline:0;
+ background:#fff;
+}

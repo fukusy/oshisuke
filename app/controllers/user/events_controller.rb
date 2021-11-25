@@ -9,7 +9,6 @@ class User::EventsController < ApplicationController
   end
 
   def create
-    # byebug
     @event = Event.new(event_params)
     @event.user_id = current_user.id
 #    relationship_tag = @event.tag_ids.new(tag_params)

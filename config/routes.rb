@@ -21,7 +21,6 @@ Rails.application.routes.draw do
    namespace :admin do
      get '/' => 'homes#top'
      resources :contacts, only: [:index]
-     resources :tags, only: [:show]
      resources :events, except: [:new] do
         resources :comments, only: [:create, :edit, :update, :destroy]
      end
@@ -31,6 +30,7 @@ Rails.application.routes.draw do
    scope module: :user do
      get '/' => 'homes#top'
      get '/attention' => 'homes#attention'
+     resources :tags, only: [:show]
      resources :users, except: [:destroy] do
        resource :relationship_users, only: [:create, :destroy]
      get 'followings' => 'relationship_users#followings', as: 'followings'
