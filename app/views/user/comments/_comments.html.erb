@@ -11,7 +11,7 @@
                 <%= attachment_image_tag comment.user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "20x20", class: "rounded-circle" %>
                 <%= comment.user.name %>
               <% end %>
-              <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+              <%= comment.updated_at.strftime('%Y年%m月%d日 %H:%M') %>
             </div>
             <div class="float-right">
               <% if comment.user == current_user %>
