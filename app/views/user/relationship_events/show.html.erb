@@ -1,9 +1,13 @@
 <div class="container">
-  <div class="row">
-    <div class="col-12 ">
-      <h3 class="my-3 text-center">イベントに参加しますか？</h3>
-      <%= link_to "参加する",event_relationship_events_path(@event,@user), method: :post %>
-      <%= link_to "参加しない",events_path(@event) %>
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-5 px-5 px-sm-0 mx-auto pt-5 text-center">
+        <h3 class="my-3 text-center">イベントに参加しますか？</h3>
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+          <div class="mx-auto">
+            <%= link_to "参加する",event_relationship_events_path(@event,@user), method: :post, type:"button", class:"btn btn-outline-info btn-lg" %>
+            <%= link_to "参加しない",events_path(@event), type:"button", class:"btn btn-outline-dark btn-lg" %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>

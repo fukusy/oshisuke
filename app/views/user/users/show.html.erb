@@ -9,7 +9,22 @@
           </div>
 
           <div class="col-10">
-            <h5><%= @user.name %></h5>
+            <div class="flax-none d-flex">
+              <div class="flax-left mr-3">
+                <h5><%= @user.name %></h5>
+              </div>
+              <!--フォロー機能-->
+              <div class="flax-left">
+                <% unless @user == current_user %>
+                  <% if current_user.following?(@user) %>
+                  <!--destroyされていない-->
+                    <%= link_to "フォローを外す", user_relationship_users_path(@user.id), class:'btn btn-sm btn-info', method: :delete %>
+                  <% else %>
+                    <%= link_to "フォローする", user_relationship_users_path(@user.id), class:'btn btn-sm btn-success',method: :post %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
             フォロー
             <%= link_to user_followings_path(@user) do %>
               <%= @user.followings.count %>
@@ -19,18 +34,7 @@
             <%= link_to user_followers_path(@user) do %>
               <%= @user.followers.count %>
             <% end %>
-            <!--フォロー機能-->
-          <!--<div>-->
-            <% unless @user == current_user %>
-              <% if current_user.following?(@user) %>
-              <!--destroyされていない-->
-                <%= link_to "フォローを外す", user_relationship_users_path(@user.id), class:'btn btn-sm btn-info', method: :delete %>
-              <% else %>
-                <%= link_to "フォローする", user_relationship_users_path(@user.id), class:'btn btn-sm btn-success',method: :post %>
-              <% end %>
-            <% end %>
-          <!--</div>-->
-          
+
             </br>
             <%= @user.introduction %>
               <div>

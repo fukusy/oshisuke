@@ -2,7 +2,7 @@
   <div class="row">
     <div class="border col-12 mt-4">
       <div class="float-none d-flex align-items-end align-bottom border-bottom">
-        <div class="float-left mr-3">
+        <div class="float-left mr-3 mt-2">
           <h1><%= @event.event_name %></h1>
         </div>
         <div class="float-left">
@@ -14,18 +14,17 @@
             <% end %>
           </p>
         </div>
-        <div class="float-right btn-toolbar">
-          タグ表示：
+        <p class="text-right ml-3">
           <% @event.tags.each do |tag| %>
-              <p class="well"><%= link_to tag.tag_name,tag_path(tag.id) %></p>
+              <%= link_to tag.tag_name,tag_path(tag.id), class: "btn btn-info btn-sm" %>
           <% end %>
-        </div>
+        </p>
       </div>
 
       <!--< % @event.tags.each do |tag| %>-->
       <!--  <p>< %= tag.tag_name %></p>-->
       <!--< % end %>-->
-      <div class="float-none">
+      <div class="float-none mt-2">
         <div class="float-left">
           <p><%= @event.event_content %></p>
         </div>
