@@ -26,7 +26,7 @@
                   <li class="button_header"><%= link_to "お問い合わせ", new_contact_path, class: 'nav-link active' %></li>
                   <li class="button_header"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link active' %></li>
                 <% elsif admin_signed_in? %>
-                  <li class="button_header"><%= link_to "お問い合わせ一覧", admin_contacts_path, class: 'nav-link active' %></li>
+                  <li class="button_header"><%= link_to "お問合わせ一覧", admin_contacts_path, class: 'nav-link active' %></li>
                   <li class="button_header"><%= link_to "イベント一覧", admin_events_path, class: 'nav-link active' %></li>
                   <li class="button_header"><%= link_to "タグ一覧", admin_tags_path, class: 'nav-link active' %></li>
                   <li class="button_header"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link active' %></li>

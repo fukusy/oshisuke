@@ -3,7 +3,7 @@
     <div class="col-sm-12 col-md-12 col-lg-5 px-5 px-sm-0 mx-auto pt-5">
       <h3>イベント一覧</h3>
       <% @events.each do |event| %>
-        <div class="col-md-12 mt-3 border d-flex bd-highlight">
+        <div class="col-md-12 mt-3 border d-flex">
           <!--< %= link_to event_path(event.id) do %>-->
             <div class="float-none mt-2">
               <h5 class="float-left"><%= event.event_name %></h5>
@@ -11,12 +11,12 @@
               <p class="float-left small">　<%= l event.event_date %><%= l event.event_time %></p>
 
               <div class="float-left">
-                <%= link_to user_path(event.user_id) do %>
+                <!--< %= link_to user_path(event.user_id) do %>-->
                   <p>　<%= event.user.name %></p>
-                <% end %>
+                <!--< % end %>-->
               </div>
 
-              <div class="float-right">
+              <div class="float-right ml-3">
                 <%= link_to event_path(event), method: :delete, class: "btn btn-sm btn-danger" do %>
                   <i class="fas fa-trash-alt"></i>
                 <% end %>

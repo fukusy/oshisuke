@@ -24,6 +24,7 @@ Rails.application.routes.draw do
      resources :events, except: [:new] do
         resources :comments, only: [:create, :edit, :update, :destroy]
      end
+     
      resources :tags, except: [ :show, :new]
    end
 
