@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_14_040655) do
+ActiveRecord::Schema.define(version: 2021_11_22_163759) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2021_11_14_040655) do
 
   create_table "relationship_users", force: :cascade do |t|
     t.integer "follower_id"
-    t.integer "followered_id"
+    t.integer "followed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

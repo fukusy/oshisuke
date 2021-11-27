@@ -3,12 +3,20 @@
     <div class="col-sm-12 col-md-12 col-lg-5 px-5 px-sm-0 mx-auto pt-5 text-center">
       <h3>お問い合わせ一覧</h3>
       <% @contacts.each do |contact| %>
-        <div>
-          <h5><%= contact.contact_title_i18n %></h5>
-          <%= link_to user_path(contact.user_id) do %>
-            <%= contact.user.name %>
-          <% end %>
-          <p><%= contact.contact_content %></p>
+        <div class="col-md-12 mt-4 border">
+          <div class="border-bottom float-none d-flex align-items-end align-bottom mt-2">
+            <div class="float-left mt-2">
+              <h5><%= contact.contact_title_i18n %></h5>
+            </div>
+            <div class="float-left ml-3 mb-2">
+              <!--< %= link_to user_path(contact.user_id) do %>-->
+                <%= contact.user.name %>
+              <!--< % end %>-->
+            </div>
+          </div>
+          <!--<div >-->
+              <p class="text-left mt-2"><%= contact.contact_content %></p>
+          <!--</div>-->
         </div>
       <% end %>
 

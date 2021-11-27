@@ -1,15 +1,22 @@
+<div style="height:10px"></div>
+
+<div class='btn-group'>
 <%- if controller_name != 'sessions' %>
-  <%= link_to "ログイン", new_session_path(resource_name), class: 'btn btn-outline-secondary' %><br />
+  <%= link_to "ログイン", new_session_path(resource_name), class: 'btn btn-outline-secondary w-30' %><br />
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "新規登録", new_registration_path(resource_name), class: 'btn btn-outline-secondary' %><br />
+  <%= link_to "新規登録", new_registration_path(resource_name), class: 'btn btn-outline-secondary w-30' %><br />
 <% end %>
 
-</br
+
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
     <!--以下１行を編集-->
-    <%= link_to "#{OmniAuth::Utils.camelize(provider)}アカウントでログイン", omniauth_authorize_path(resource_name, provider), class:'fab fa-twitter btn btn-outline-primary', method: :post %>
+    <%= link_to "#{OmniAuth::Utils.camelize(provider)}アカウントでログイン", omniauth_authorize_path(resource_name, provider), class:'fab fa-twitter btn btn-outline-primary ml-3', method: :post %>
   <% end %>
 <% end %>
+
+</div>
+</br>
+<small>※Twitterログインを利用する場合は自動的に利用規約に同意したことになります。</small>

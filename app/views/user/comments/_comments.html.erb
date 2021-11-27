@@ -1,21 +1,32 @@
 <h5>コメント表示</h5>
-<table>
+<table class="table table-hover">
   <tbody>
-    <tr>
-      <% @event.comments.each do |comment| %>
-      <td>
-        <%= comment.comment_content %>
-        <%= link_to user_path(comment.user) do %>
-          <%= attachment_image_tag comment.user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "35x35" %>
-          <%= comment.user.name %>
-        <% end %>
-        <%= l comment.created_at %>
-        <% if comment.user == current_user %>
-          <%= link_to 'Edit', edit_event_comments_path(comment.event, comment), class:"btn btn-sm" %>
-          <%= link_to 'Destroy', event_comments_path(comment.event, comment),method: :delete, remote: true, class:"btn btn-sm btn-danger" %>
-        <% end %>
-      </td>
-      <% end %>
-    </tr>
+    <% @event.comments.each do |comment| %>
+      <tr>
+        <td class="border">
+          <%= comment.comment_content %>
+          <div class="float-none mt-3">
+            <div class="float-left small">
+              <%= link_to user_path(comment.user) do %>
+                <%= attachment_image_tag comment.user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "20x20", class: "rounded-circle" %>
+                <%= comment.user.name %>
+              <% end %>
+              <%= comment.updated_at.strftime('%Y年%m月%d日 %H:%M') %>
+            </div>
+            <div class="float-right">
+              <% if comment.user == current_user %>
+                <%= link_to edit_event_comment_path(comment.event, comment), class:"btn btn-sm btn-secondary" do %>
+                  <i class="fas fa-pen"></i>
+                <% end %>
+
+                <%= link_to event_comment_path(comment.event, comment),method: :delete, class:"btn btn-sm btn-danger" do %>
+                  <i class="far fa-trash-alt"></i>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </td>
+      </tr>
+    <% end %>
   </tbody>
 </table>

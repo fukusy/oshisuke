@@ -1,11 +1,13 @@
-<div class="container">
+<div class="container mt-3">
   <div class="row">
-    <div class="col">
-      <h3 class="my-3">タグ編集</h3>
+    <div class="col-sm-12 col-md-12 col-lg-5 px-5 px-sm-0 mx-auto pt-5 text-center">
+      <h3 class="my-3 text-center">タグ編集</h3>
       <%= form_with model:@tag,url: admin_tag_path(@tag.id), local:true do |f| %>
-        <%= f.label :タグ名 %>
-        <%= f.text_field :tag_name %>
-        <%= f.submit "変更を保存", class: 'btn btn-success' %>
+        <%= f.label :タグ名 %></br>
+        <%= f.text_field :tag_name %></br>
+        <div class="mx-auto">
+          <%= f.submit "変更を保存", class: 'mt-2 btn btn-success' %>
+        </div>
       <% end %>
     </div>
   </div>

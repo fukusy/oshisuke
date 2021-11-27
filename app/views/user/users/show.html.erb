@@ -1,17 +1,44 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      
-      <div class="col-12">
+
+      <div class="col-12 mt-4">
         <div class="row">
           <div class="col-2">
-            <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100"  %>
+            <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100", class: "rounded-circle"  %>
           </div>
+
           <div class="col-10">
-            <%= @user.name %></br>
+            <div class="flax-none d-flex">
+              <div class="flax-left mr-3">
+                <h5><%= @user.name %></h5>
+              </div>
+              <!--フォロー機能-->
+              <div class="flax-left">
+                <% unless @user == current_user %>
+                  <% if current_user.following?(@user) %>
+                  <!--destroyされていない-->
+                    <%= link_to "フォローを外す", user_relationship_users_path(@user.id), class:'btn btn-sm btn-info', method: :delete %>
+                  <% else %>
+                    <%= link_to "フォローする", user_relationship_users_path(@user.id), class:'btn btn-sm btn-success',method: :post %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+            フォロー
+            <%= link_to user_followings_path(@user) do %>
+              <%= @user.followings.count %>
+            <% end %>
+
+            フォロワー
+            <%= link_to user_followers_path(@user) do %>
+              <%= @user.followers.count %>
+            <% end %>
+
+            </br>
             <%= @user.introduction %>
               <div>
-                <% unless @user != current_user  %>
+                <% unless @user != current_user %>
                   <%= link_to edit_user_path(@user), class:"btn btn-outline-secondary" do %>
                     <i class="fas fa-user-cog">プロフィール編集</i>
                   <% end %>
@@ -20,14 +47,20 @@
           </div>
         </div>
       </div>
-      <h3 class="my-3">参加イベント一覧</h3>
-      <%= month_calendar events:@user_events do |date, event| %>
+      <h3 class="my-3">参加イベント一覧<small>　(作成イベント:<span class="text-info">■</span>参加登録したイベント:<span class="text-dark">■</span>)</small></h3>
+      <%#= month_calendar events: @user_events, events: @user_relationship_events do |date, event| %>
+      <%= month_calendar events: @user_events do |date, event| %>
         <%= date.day %>
         <% event.each do |event| %>
         <div>
-          <%= link_to event.event_name, event_path(event.id) %>
+          <% if event.user == @user %>
+            <%= link_to event.event_name, event_path(event.id), class: 'btn btn-sm btn-block btn-outline-info' %>
+          <% else %>
+            <%= link_to event.event_name, event_path(event.id), class: 'btn btn-sm btn-block btn-outline-dark' %>
+          <% end %>
         </div>
         <% end %>
+
       <% end %>
     </div>
   </div>

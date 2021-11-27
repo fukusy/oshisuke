@@ -9,13 +9,17 @@ class User::EventsController < ApplicationController
   end
 
   def create
-    # byebug
     @event = Event.new(event_params)
     @event.user_id = current_user.id
-    # relationship_tag = @event.tag_ids.new(tag_params)
-    # relationship_tag.save!
+#    relationship_tag = @event.tag_ids.new(tag_params)
+#    relationship_tag.save!
 
     if @event.save!
+      if params[:event][:tag_ids].present?
+        params[:event][:tag_ids].split(',').each do |tag|
+          RelationshipTag.create(tag_id: tag.to_i, event: @event)
+        end
+      end
       redirect_to event_path(@event)
     else
       render :index
@@ -26,14 +30,16 @@ class User::EventsController < ApplicationController
     @event = Event.find(params[:id])
     @comments = Comment.all
     @comment = Comment.new
-    # @event_tags = @event.relationship_tags
-    
-    # 後でイベント作成者と管理者、イベント参加者をif文で分岐
-    # if current_user == @event.user
-    #   render :show
-    # else
-    #   redirect_to event_relationship_events_path
-    # end
+    @event_tags = @event.relationship_tags
+    @relation_tag_array = RelationshipTag.where(event_id: @event.id).pluck(:tag_id)
+
+    # 後でイベント作成者とイベント参加者、それ以外をif文で分岐
+    if current_user == @event.user || current_user.joined_events.include?(@event)
+    # if current_user == @event.user || @event_relationship != []
+      render :show
+    else
+      redirect_to event_relationship_event_path(@event)
+    end
   end
 
   def destroy
@@ -67,7 +73,7 @@ class User::EventsController < ApplicationController
   end
 
   # def tag_params
-    # params.require(:relationship_tag).permit(:tag_ids: tag_ids: [],:event_id: current_event)
+  #   params.require(:relationship_tag).permit(:tag_ids: tag_ids: [],:event_id: current_event)
 
   # end
 

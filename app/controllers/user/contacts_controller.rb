@@ -8,7 +8,11 @@ class User::ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     @contact.user_id = current_user.id
     if @contact.save!
+      # respond_to do |format|
+        UserMailer.send_when_create.deliver_later
+      # end
       redirect_to contacts_complete_path
+
     else
       render :new
     end

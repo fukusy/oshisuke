@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'searchs/search'
+  namespace :user do
+    get 'tags/show'
+  end
+  get 'search' => 'searchs#search'
+
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
@@ -15,13 +21,17 @@ Rails.application.routes.draw do
    namespace :admin do
      get '/' => 'homes#top'
      resources :contacts, only: [:index]
-     resources :events, only: [:index]
+     resources :events, except: [:new] do
+        resources :comments, only: [:create, :edit, :update, :destroy]
+     end
+     
      resources :tags, except: [ :show, :new]
    end
 
    scope module: :user do
      get '/' => 'homes#top'
      get '/attention' => 'homes#attention'
+     resources :tags, only: [:show]
      resources :users, except: [:destroy] do
        resource :relationship_users, only: [:create, :destroy]
      get 'followings' => 'relationship_users#followings', as: 'followings'
@@ -31,9 +41,9 @@ Rails.application.routes.draw do
      get 'contacts/complete' => 'contacts#complete'
      resources :contacts, only: [:new, :create]
      resources :events, except: [:new] do
-       resource :comments, only: [:create, :edit, :update, :destroy]
-       resource :relationship_events, only: [:show, :create]
-       resource :relationship_tags, only: [:create, :destroy]
+       resources :comments, only: [:create, :edit, :update, :destroy]
+       resources :relationship_events, only: [:show, :create]
+       resources :relationship_tags, only: [:create, :destroy]
      end
 
    end
