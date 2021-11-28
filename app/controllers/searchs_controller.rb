@@ -1,6 +1,8 @@
 class SearchsController < ApplicationController
 
   def search
+    # whereでuserのidを持っているか判断
+    @user = User.where(params[:id])
     @keyword = params[:keyword]
     #@events = Event.search(params[:keyword])
     event1 = Event.search(params[:keyword])

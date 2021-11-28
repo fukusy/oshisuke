@@ -4,9 +4,10 @@
       <h3 class="text-center">イベント一覧</h3>
       <% @events.each do |event| %>
         <div class="col-md-12 mt-3 border d-flex">
-          <!--< %= link_to event_path(event.id) do %>-->
             <div class="float-none mt-2">
+              <%= link_to admin_event_path(event.id) do %>
               <h5 class="float-left"><%= event.event_name %></h5>
+              <% end %>
               <!--lメソッドでDRY書式に指定-->
               <p class="float-left small">　<%= l event.event_date %><%= l event.event_time %></p>
 
@@ -17,7 +18,10 @@
               </div>
 
               <div class="float-right ml-3">
-                <%= link_to event_path(event), method: :delete, class: "btn btn-sm btn-danger" do %>
+                <%= link_to edit_admin_event_path(event.id), class: "btn btn-sm btn-secondary" do %>
+                  <i class="fas fa-pen"></i>
+                <% end %>
+                <%= link_to admin_event_path(event.id), method: :delete, class: "btn btn-sm btn-danger" do %>
                   <i class="fas fa-trash-alt"></i>
                 <% end %>
               </div>

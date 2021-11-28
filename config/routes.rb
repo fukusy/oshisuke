@@ -21,11 +21,11 @@ Rails.application.routes.draw do
    namespace :admin do
      get '/' => 'homes#top'
      resources :contacts, only: [:index]
-     resources :events, except: [:new] do
+     resources :events, except: [:new, :create] do
         resources :comments, only: [:create, :edit, :update, :destroy]
      end
-     
-     resources :tags, except: [ :show, :new]
+
+     resources :tags, except: [:show, :new]
    end
 
    scope module: :user do
