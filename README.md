@@ -37,6 +37,8 @@
 - 推しの誕生日をいろいろな人と祝いたいとき
 - イベントに『これから参加するぞ！』というとき
 
+[チャレンジ要素一覧](https://docs.google.com/spreadsheets/d/1hUAmSCxwUCo95x0j8BiK1SSDnThuxjX5V71wlllhOaw/edit#gid=0)
+[チャレンジ要素一覧と優先順位](https://docs.google.com/spreadsheets/d/1Dy2V9ide4YK0uVMiaJElLjA7scAmDhEMHI9GaVzgIGc/edit#gid=0)
 
 
 ## 開発環境
