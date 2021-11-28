@@ -5,12 +5,14 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= include_gon %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_include_tag "application" %>
   </head>
 
   <body>
-     <div class="wrapper">
+     <div class="wrapper" id="<%= "user_homes_wrapper" if params[:controller] == "user/homes" %>">
       <header>
         <nav class="navbar navbar-expand-lg navbar-dark">
           <div class="container">
@@ -50,10 +52,8 @@
           <% end %>
         </nav>
       </header>
-      <%= include_gon %>
-      <%= javascript_include_tag "application" %>
       <%= yield %>
-      <footer class=" footer mt-5">
+      <footer class="footer mt-5" id="<%= "user_homes_footer" if params[:controller] == "user/homes" %>">
         <p class="text-white text-center pt-3">©推しスケ!</p>
       </footer>
     </div>
