@@ -54,11 +54,7 @@
                     <%= comment.updated_at.strftime('%Y年%m月%d日 %H:%M') %>
                   </div>
                   <div class="float-right">
-                    <%= link_to edit_event_comment_path(comment.event, comment), class:"btn btn-sm btn-secondary" do %>
-                      <i class="fas fa-pen"></i>
-                    <% end %>
-
-                    <%= link_to event_comment_path(comment.event, comment),method: :delete, class:"btn btn-sm btn-danger" do %>
+                    <%= link_to admin_event_comment_path(comment.event, comment),method: :delete, class:"btn btn-sm btn-danger" do %>
                       <i class="far fa-trash-alt"></i>
                     <% end %>
                   </div>
