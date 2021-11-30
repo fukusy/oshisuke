@@ -2,7 +2,7 @@ class User::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-
+      
       # @user_events = @user.events
       # @user_relationship_events = @user.joined_events
     # if relation_array.present?

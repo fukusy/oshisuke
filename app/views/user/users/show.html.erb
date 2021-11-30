@@ -10,9 +10,17 @@
 
           <div class="col-10">
             <div class="flax-none d-flex">
-              <div class="flax-left mr-3">
-                <h5><%= @user.name %></h5>
+              <div class="flax-left mr-2">
+                <h4><%= @user.name %></h4>
               </div>
+              <div class="flax-left mr-3">
+                <% unless @user.uid == nil %>
+                  <%= link_to "https://twitter.com/i/user/#{@user.uid}", target: :_blank, rel: "noopener noreferrer", class: "btn btn-sm btn-outline-primary rounded-circle" do%>
+                    <i class="fab fa-twitter"></i>
+                  <% end %>
+                <% end %>
+              </div>
+
               <!--フォロー機能-->
               <div class="flax-left">
                 <% unless @user == current_user %>
